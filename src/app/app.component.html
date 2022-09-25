@@ -1,0 +1,106 @@
+<header class="bg-gradient-to-r from-blue-800 to-blue-500
+ duration-100 h-80">
+    <div class="max-w-[1280px] flex justify-between m-auto items-center py-8 relative pr-20">
+        <div class="flex items-center">
+            <a href="/qrcode-free/" class="nuxt-link-active" style="z-index: 1;">
+                <img src="https://marketing.icheck.vn/qrcode-free/_nuxt/3eebbb2736877077fde78843822299cd.svg"
+                    alt=""></a>
+        </div>
+        <div class="flex items-center z-10">
+            <a href="javascript:void(0)" class="text-white block py-2 px-4 hover:text-gray-200">
+                QR Code Doanh nghiệp
+            </a>
+            <a href="javascript:void(0)" class="text-white block py-2 px-4 hover:text-gray-200">
+                QR Code Free
+            </a>
+            <a href="javascript:void(0)" class="text-white block py-2 px-4 hover:text-gray-200">
+                QR Code là gì?
+            </a>
+            <a href="javascript:void(0)" class="text-white block py-2 px-4 hover:text-gray-200">
+                Dịch vụ
+            </a>
+        </div>
+    </div>
+</header>
+<div class="content">
+    <div class="relative -mt-44 bg-[#f5f5f5]">
+        <div class="max-w-[1280px] m-auto w-[1280px]">
+            <div class="relative h-auto box-border block -mx-5">
+                <div
+                    class="flex-grow-0 flex-shrink-0 basis-auto float-left px-5 block box-border w-[20.83333333%] relative">
+                    <div>
+                        <ul class="list-menu bg-white py-4 pr-5 rounded-xl shadow-lg block min-h-[100vh]">
+                            <li class="pl-8 py-3 cursor-pointer duration-300">
+                                <div
+                                    class="flex items-center text-gray-600 hover:text-current mb-0 justify-between pr-2">
+                                    <div>Văn bản</div>
+                                </div>
+                            </li>
+                            <li class="pl-8 py-3 cursor-pointer duration-300">
+                                <div
+                                    class="flex items-center text-gray-600 hover:text-current mb-0 justify-between pr-2">
+                                    <div>Văn bản</div>
+                                </div>
+                            </li>
+                            <li class="pl-8 py-3 cursor-pointer duration-300">
+                                <div
+                                    class="flex items-center text-gray-600 hover:text-current mb-0 justify-between pr-2">
+                                    <div>Văn bản</div>
+                                </div>
+                            </li>
+                            <li class="pl-8 py-3 cursor-pointer duration-300">
+                                <div
+                                    class="flex items-center text-gray-600 hover:text-current mb-0 justify-between pr-2">
+                                    <div>Văn bản</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="flex-grow-0 flex-shrink-0 basis-auto float-left px-5 block box-border w-[79.16666667%] relative min-h-[100vh]">
+                    <div>
+                        <div class="page-title mb-7">
+                            <h4 class="text-white text-3xl font-semibold mb-0">Tạo QR Code Văn bản
+                            </h4>
+                        </div>
+                        <div class="home-page-generate mb-16">
+                            <div class=" relative h-auto block box-border -mx-5">
+                                <div class="ant-col ant-col-xs-24 ant-col-lg-14 flex-grow-0 flex-shrink-0 basis-auto float-left relative w-[58.33333333%]"
+                                    style="padding-left: 20px; padding-right: 20px;">
+                                    <div class="bg-white rounded-xl shadow-md mb-5 transition-none p-6 h-full">
+                                        <div
+                                            class="ant-form ant-form-horizontal  box-border m-0 p-0 text-[#000000a6] text-sm list-none ">
+                                            <div class="mb-2 block text-black">Họ tên </div>
+                                            <input type="text" #hoten (keyup)="hoten_change(hoten.value)" class="box-border m-0 tabular-nums list-none relative inline-block w-full
+                                            h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
+                                            focus::border focus:border-blue-600 mb-2">
+                                            <div class="mb-2 block text-black">Địa chỉ</div>
+                                            <input type="text" #diachi (keyup)="diachi_change(diachi.value)" class="box-border m-0 tabular-nums list-none relative inline-block w-full
+                                            h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
+                                            focus:border focus:border-blue-600 mb-2">
+                                            <div class="mb-2 block text-black">Số điện thoại</div>
+                                            <input type="text" #sodt (keyup)="sodt_change(sodt.value)" class="box-border m-0 tabular-nums list-none relative inline-block w-full
+                                            h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
+                                            focus:border focus:border-blue-600">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ant-col ant-col-xs-24 ant-col-lg-14 flex-grow-0 flex-shrink-0 basis-auto float-left relative w-[41.66666667%]"
+                                    style="padding-left: 20px; padding-right: 20px;">
+                                    <div class="py-6 px-12 bg-white rounded-xl relative shadow-md">
+                                        <qrcode [qrdata]="giatri" [width]="256" [errorCorrectionLevel]="'M'"
+                                            (qrCodeURL)="onCodeChange($event)" [elementType]="'img'"></qrcode>
+                                        <a [href]="url" download="QRImg"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block max-w-[120px] text-center">Tải
+                                            về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
