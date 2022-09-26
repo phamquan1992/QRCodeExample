@@ -8,3 +8,8 @@
 #__layout, #__nuxt{
     min-height:100vh;
 }
+.qrcode_css {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}

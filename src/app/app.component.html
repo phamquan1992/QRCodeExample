@@ -72,15 +72,15 @@
                                         <div
                                             class="ant-form ant-form-horizontal  box-border m-0 p-0 text-[#000000a6] text-sm list-none ">
                                             <div class="mb-2 block text-black">Họ tên </div>
-                                            <input type="text" #hoten (keyup)="hoten_change(hoten.value)" class="box-border m-0 tabular-nums list-none relative inline-block w-full
+                                            <input type="text" #hoten (keyup)="change_value(hoten)" name="hoten" class="box-border m-0 tabular-nums list-none relative inline-block w-full
                                             h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
                                             focus::border focus:border-blue-600 mb-2">
                                             <div class="mb-2 block text-black">Địa chỉ</div>
-                                            <input type="text" #diachi (keyup)="diachi_change(diachi.value)" class="box-border m-0 tabular-nums list-none relative inline-block w-full
+                                            <input type="text" #diachi (keyup)="change_value(diachi)" name="diachi" class="box-border m-0 tabular-nums list-none relative inline-block w-full
                                             h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
                                             focus:border focus:border-blue-600 mb-2">
                                             <div class="mb-2 block text-black">Số điện thoại</div>
-                                            <input type="text" #sodt (keyup)="sodt_change(sodt.value)" class="box-border m-0 tabular-nums list-none relative inline-block w-full
+                                            <input type="text" #sodt (keyup)="change_value(sodt)" name="sodt" class="box-border m-0 tabular-nums list-none relative inline-block w-full
                                             h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
                                             focus:border focus:border-blue-600">
                                         </div>
@@ -89,10 +89,10 @@
                                 <div class="ant-col ant-col-xs-24 ant-col-lg-14 flex-grow-0 flex-shrink-0 basis-auto float-left relative w-[41.66666667%]"
                                     style="padding-left: 20px; padding-right: 20px;">
                                     <div class="py-6 px-12 bg-white rounded-xl relative shadow-md">
-                                        <qrcode [qrdata]="giatri" [width]="256" [errorCorrectionLevel]="'M'"
-                                            (qrCodeURL)="onCodeChange($event)" [elementType]="'img'"></qrcode>
+                                        <qrcode [qrdata]="giatri" [width]="250" [errorCorrectionLevel]="'M'" [cssClass]="'qrcode_css'"
+                                            (qrCodeURL)="onCodeChange($event)" [elementType]="'img'" [allowEmptyString]="true"></qrcode>
                                         <a [href]="url" download="QRImg"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block max-w-[120px] text-center">Tải
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block max-w-[120px] text-center m-auto">Tải
                                             về</a>
                                     </div>
                                 </div>

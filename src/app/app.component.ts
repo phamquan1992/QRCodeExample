@@ -9,29 +9,37 @@ import { SafeUrl } from '@angular/platform-browser';
 export class AppComponent {
   title = 'qrcodeex';
 
-  hoten = ' ';
-  diachi = ' ';
-  sodienthoai = ' ';
-  giatri: string = ' ';
+  hoten = '';
+  diachi = '';
+  sodienthoai = '';
+  giatri: string = '';
   url: SafeUrl = '';
-
-  setgt() {
-    this.giatri = 'Họ tên: ' + this.hoten + '|Địa chỉ: ' + this.diachi + '|Số điện thoại: ' + this.sodienthoai;
-  }
-
-  hoten_change(newchange: string) {
-    this.hoten = newchange;
-    this.setgt();
-  }
-  diachi_change(newchange: string) {
-    this.diachi = newchange;
-    this.setgt();
-  }
-  sodt_change(newchange: string) {
-    this.sodienthoai = newchange;
-    this.setgt();
-  }
+  str_arr: string[] = [];
+  
   onCodeChange(url: SafeUrl) {
     this.url = url;
+  }
+  change_value(gt: HTMLInputElement) {
+    if (this.str_arr.length == 0)
+      this.str_arr.push(gt.name + ':' + gt.value);
+    else {
+      let dem = -1;
+      let check = 0;
+      this.str_arr.forEach(element => {
+        dem = dem + 1;
+        let it_temp = element.split(':');
+        let key_it = it_temp[0];
+        if (key_it == gt.name) {
+          this.str_arr[dem] = gt.name + ':' + gt.value;
+          if (gt.value === '')
+            this.str_arr.splice(dem, 1);
+          check = 1;
+        }
+      });
+      if (check === 0)
+        this.str_arr.push(gt.name + ':' + gt.value);
+    }
+    console.log(JSON.stringify(this.str_arr));
+    this.giatri = JSON.stringify(this.str_arr).replace('[', '').replace(']', '');
   }
 }
