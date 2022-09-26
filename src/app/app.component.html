@@ -68,9 +68,9 @@
                             <div class=" relative h-auto block box-border -mx-5">
                                 <div class="ant-col ant-col-xs-24 ant-col-lg-14 flex-grow-0 flex-shrink-0 basis-auto float-left relative w-[58.33333333%]"
                                     style="padding-left: 20px; padding-right: 20px;">
-                                    <div class="bg-white rounded-xl shadow-md mb-5 transition-none p-6 h-full">
-                                        <div
-                                            class="ant-form ant-form-horizontal  box-border m-0 p-0 text-[#000000a6] text-sm list-none ">
+                                    <div class="bg-white rounded-xl shadow-md mb-5 transition-none p-6 h-full overflow-y-auto max-h-[500px]">
+                                        <!-- <div
+                                            class="ant-form ant-form-horizontal  box-border m-0 p-0 text-[#000000a6] text-sm list-none">
                                             <div class="mb-2 block text-black">Họ tên </div>
                                             <input type="text" #hoten (keyup)="change_value(hoten)" name="hoten" class="box-border m-0 tabular-nums list-none relative inline-block w-full
                                             h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
@@ -83,14 +83,29 @@
                                             <input type="text" #sodt (keyup)="change_value(sodt)" name="sodt" class="box-border m-0 tabular-nums list-none relative inline-block w-full
                                             h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
                                             focus:border focus:border-blue-600">
+                                        </div> -->
+                                        <button (click)="addvalue()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded block max-w-[100px] text-center m-auto text-xs">Thêm mới</button>
+                                        <div class="ant-form ant-form-horizontal  box-border m-0 p-0 text-[#000000a6] text-sm list-none"
+                                            *ngFor="let value of values; let i = index">
+                                            <div class="mb-2 block text-black">Thông tin {{i+1}} </div>
+                                            <div class="flex">
+                                                <input type="text" class="box-border m-0 tabular-nums list-none relative inline-block w-full
+                                                h-[32px] py-1 px-3 text-[#000000a6] text-sm bg-white border border-solid border-[#d9d9d9] rounded outline-none
+                                                focus::border focus:border-blue-600 mb-2" [(ngModel)]="value.value"
+                                                    #name="ngModel" name="value{{i}}" (keyup)="onFocusOutEvent()">
+                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded block max-w-[90px] text-center mb-2 ml-2 text-xs" (click)="removevalue(i)">Xoá</button>
+                                            </div>
+                                           
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="ant-col ant-col-xs-24 ant-col-lg-14 flex-grow-0 flex-shrink-0 basis-auto float-left relative w-[41.66666667%]"
                                     style="padding-left: 20px; padding-right: 20px;">
                                     <div class="py-6 px-12 bg-white rounded-xl relative shadow-md">
-                                        <qrcode [qrdata]="giatri" [width]="250" [errorCorrectionLevel]="'M'" [cssClass]="'qrcode_css'"
-                                            (qrCodeURL)="onCodeChange($event)" [elementType]="'img'" [allowEmptyString]="true"></qrcode>
+                                        <qrcode [qrdata]="giatri" [width]="250" [errorCorrectionLevel]="'H'"
+                                            [cssClass]="'qrcode_css'" (qrCodeURL)="onCodeChange($event)"
+                                            [elementType]="'img'" [allowEmptyString]="true"></qrcode>
                                         <a [href]="url" download="QRImg"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block max-w-[120px] text-center m-auto">Tải
                                             về</a>

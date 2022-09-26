@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
@@ -6,7 +6,8 @@ import { SafeUrl } from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'qrcodeex';
 
   hoten = '';
@@ -15,7 +16,10 @@ export class AppComponent {
   giatri: string = '';
   url: SafeUrl = '';
   str_arr: string[] = [];
-  
+  values = [{ value: '' }];
+  ngOnInit(): void {
+    this.values = [];
+  }
   onCodeChange(url: SafeUrl) {
     this.url = url;
   }
@@ -39,7 +43,25 @@ export class AppComponent {
       if (check === 0)
         this.str_arr.push(gt.name + ':' + gt.value);
     }
-    console.log(JSON.stringify(this.str_arr));
     this.giatri = JSON.stringify(this.str_arr).replace('[', '').replace(']', '');
+  }
+  removevalue(i: number) {
+    this.values.splice(i, 1);
+    this.onFocusOutEvent();
+  }
+
+  addvalue() {
+    let test = { value: '' };
+    this.values.push(test);
+
+  }
+  onFocusOutEvent() {
+    this.giatri = '';
+    this.values.forEach(element => {
+      if (this.giatri === '')
+        this.giatri = element.value;
+      else
+        this.giatri = this.giatri + '|' + element.value;
+    });
   }
 }
